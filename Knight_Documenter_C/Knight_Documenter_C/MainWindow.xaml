@@ -2,7 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
+    <!-- Resources for Main Window-->
+    <Window.Resources>
+        
+    </Window.Resources>
+    
     <Grid>
+        
         
     </Grid>
 </Window>

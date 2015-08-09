@@ -20,6 +20,8 @@ namespace Knight_Documenter_C
     /// </summary>
     public partial class MainWindow : Window
     {
+        Reader reader = new Reader();
+
         public MainWindow()
         {
             InitializeComponent();
