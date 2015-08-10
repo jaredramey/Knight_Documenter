@@ -1,1 +1,13 @@
 C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\bin\Debug\Knight_Documenter_C.exe.config
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\bin\Debug\Knight_Documenter_C.exe
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\bin\Debug\Knight_Documenter_C.pdb
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.csprojResolveAssemblyReference.cache
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\MainWindow.baml
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\MainWindow.g.cs
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\App.g.cs
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C_MarkupCompile.cache
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.g.resources
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.Properties.Resources.resources
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.csproj.GenerateResource.Cache
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.exe
+C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.pdb

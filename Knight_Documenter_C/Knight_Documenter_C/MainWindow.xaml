@@ -8,7 +8,19 @@
     </Window.Resources>
     
     <Grid>
+        <ListBox Margin="229,20,20,20" Name="ResultListBox" ItemsSource="{Binding Results}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         
+        <Button Margin="0,57,293,202" Name="CommentExtraction_Test" Click="CommentExtraction_Test_Click">
+            
+        </Button>
         
     </Grid>
 </Window>
