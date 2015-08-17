@@ -37,11 +37,45 @@ namespace Knight_Documenter_C
 
         private void CommentExtraction_Test_Click(object sender, RoutedEventArgs e)
         {
-            //test to see if commenter works
-            TestCommentExtractor();
-            ResultListBox.ItemsSource = Results;
-            //Double checking to make sure the operation finished
-            MessageBox.Show("Operation Compleeted");
+            //Getting the string set for later use
+            string selectedFunction = "";
+            //Check combobox selection and go off the function selected by the user
+            ComboBoxItem function = (ComboBoxItem)FunctionSelection.SelectedItem;
+            //Make sure the default selection on the combobox isn't selected
+            if (function.Content.ToString() != "Select A Function")
+            { 
+                selectedFunction = function.Content.ToString();
+            }
+            else
+            {
+                selectedFunction = "No function Selected";
+            }
+
+            //Switch on selectedFuntion to do requested function
+            switch(selectedFunction)
+            {
+                    //If commentExtraction is selected
+                case "Comment Extraction":
+                    //test to see if commenter works
+                    TestCommentExtractor();
+                    ResultListBox.ItemsSource = Results;
+                    //Double checking to make sure the operation finished
+                    MessageBox.Show("Operation Compleeted");
+                    break;
+
+                    //Test case to test other functions occuring
+                case "Function 2":
+                    //Just telling myself another function was selected
+                    MessageBox.Show(selectedFunction);
+                    break;
+
+                    //If no function was selected then default to telling the user nothing was selected
+                default:
+                    MessageBox.Show("No Function Selected");
+                    break;
+            }
+            
         }
+
     }
 }

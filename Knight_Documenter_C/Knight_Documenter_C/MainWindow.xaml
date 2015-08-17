@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Knight_Documenter_C.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Knight Documenter" Height="350" Width="525">
     <!-- Resources for Main Window-->
     <Window.Resources>
         
@@ -18,8 +18,16 @@
             </ListBox.ItemTemplate>
         </ListBox>
         
-        <Button Margin="0,57,293,202" Name="CommentExtraction_Test" Click="CommentExtraction_Test_Click">
-            
+        <!-- Testing use of combobox as a drop down menu to allow user to select what they wish to do -->
+        <ComboBox Name="FunctionSelection" Text="Select a Function" Margin="10,20,350,269" SelectedIndex="0">
+            <ComboBoxItem Name="Default">Select A Function</ComboBoxItem>
+            <ComboBoxItem Name="CommentExtraction">Comment Extraction</ComboBoxItem>
+            <ComboBoxItem Name="TestItem2">Function 2</ComboBoxItem>
+        </ComboBox>
+        
+        <!-- Button to submit settings and test the function -->
+        <Button Margin="34,249,316,39" Name="CommentExtraction_Test" Click="CommentExtraction_Test_Click">
+            Test Function
         </Button>
         
     </Grid>
