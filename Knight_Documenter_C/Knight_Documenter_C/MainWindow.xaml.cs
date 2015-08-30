@@ -32,7 +32,14 @@ namespace Knight_Documenter_C
 
         private void TestCommentExtractor()
         {
-            Results = reader.OperateOnFile("C:/Users/Brian's/Documents/GitHub/Knight_Documenter/Knight_Documenter_C/TestFile.txt", Method.eComments);
+            if (Selected_File.Text != "")
+            {
+                Results = reader.OperateOnFile(Selected_File.Text, Method.eComments);
+            }
+            else
+            {
+                MessageBox.Show("ERROR: No File Selected");
+            }
         }
 
         private void CommentExtraction_Test_Click(object sender, RoutedEventArgs e)
@@ -75,6 +82,27 @@ namespace Knight_Documenter_C
                     break;
             }
             
+        }
+
+        private void File_Select_Click(object sender, RoutedEventArgs e)
+        {
+            //Create open file dialog
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            //Set filter to c++ and c# header files and regular files (.txt as well for testing purposes)
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "TEXT FILES (*.txt)|*.txt|CPP FILES (*.cpp)|*.cpp|CPP HEADERS (*.h)|*.h|C# FILES (*.cs)|*.cs|All Files (*.*)|*.*";
+
+            //Display open file dialog by calling show dialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            //Get selected file name, put it into a textbox
+            if(result == true)
+            {
+                //open document
+                string fileName = dlg.FileName;
+                Selected_File.Text = fileName;
+            }
         }
 
     }
