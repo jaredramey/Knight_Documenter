@@ -88,6 +88,7 @@ namespace Knight_Documenter_C
         {
             //Create open file dialog
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.Multiselect = true;
 
             //Set filter to c++ and c# header files and regular files (.txt as well for testing purposes)
             dlg.DefaultExt = ".txt";
@@ -99,9 +100,16 @@ namespace Knight_Documenter_C
             //Get selected file name, put it into a textbox
             if(result == true)
             {
-                //open document
-                string fileName = dlg.FileName;
-                Selected_File.Text = fileName;
+                //open document(s)
+                //string fileName = dlg.FileName;
+                /*
+                 * Trying to figure out how to display multiple strings
+                 * in a textbox. Internet on the train started to become iffy
+                 * though so just making a hacky solution until I can make
+                 * a permanent solution.
+                 */
+                string[] fileNames = dlg.FileNames;
+                Selected_File.Text = fileNames[0];
             }
         }
 
