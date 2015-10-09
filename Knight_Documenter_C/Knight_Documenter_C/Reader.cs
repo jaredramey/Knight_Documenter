@@ -53,6 +53,13 @@ namespace Knight_Documenter_C
 
 
         //Function to get all commented lines
+        /*
+         * Will have to update this function later
+         * Need to loop through the entire line to check if "//" is ever
+         * done later in the line and pull all characters after that
+         * just in case someone decides to comment on a line of coode after
+         * the line is done
+         */
         private List<string> CommentExtraction(string FilePath)
         {
             //A string to temporarily store any lines starting with "//"
