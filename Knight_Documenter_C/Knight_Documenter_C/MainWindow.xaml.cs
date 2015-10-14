@@ -25,6 +25,8 @@ namespace Knight_Documenter_C
 
         public List<string> Results = new List<string>();
 
+        string[] fileNames;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace Knight_Documenter_C
         {
             if (Selected_File.Text != "")
             {
-                Results = reader.OperateOnFile(Selected_File.Text, Method.eComments);
+                Results = reader.OperateOnFile(fileNames, Method.eComments);
             }
             else
             {
@@ -108,8 +110,11 @@ namespace Knight_Documenter_C
                  * though so just making a hacky solution until I can make
                  * a permanent solution.
                  */
-                string[] fileNames = dlg.FileNames;
-                Selected_File.Text = fileNames[0];
+                fileNames = dlg.FileNames;
+                for (int i = 0; i < fileNames.Length; i++)
+                {
+                    Selected_File.Text += "\n" + fileNames[i];
+                }
             }
         }
 

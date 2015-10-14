@@ -32,7 +32,7 @@ namespace Knight_Documenter_C
                         /*=============================================================================================================*/
                         /*Main function that all data/ functions will be passed through for reading and extracting data from text files*/
                         /*=============================================================================================================*/
-        public List<string> OperateOnFile(string filePath, Method method)
+        public List<string> OperateOnFile(string[] filePaths, Method method)
         {
             //List to return
             List<string> returnedLines;
@@ -42,7 +42,7 @@ namespace Knight_Documenter_C
             {
                 case Method.eComments:
                     //Call function to extract all commented lines
-                    returnedLines = CommentExtraction(filePath);
+                    returnedLines = CommentExtraction(filePaths);
                     //return all commented lines from file (commented via "//")
                     return returnedLines;
 
@@ -60,44 +60,78 @@ namespace Knight_Documenter_C
          * just in case someone decides to comment on a line of coode after
          * the line is done
          */
-        private List<string> CommentExtraction(string FilePath)
+        private List<string> CommentExtraction(string[] FilePath)
         {
             //A string to temporarily store any lines starting with "//"
             string line;
             List<string> commentedLines = new List<string>();
 
-            //Open up the file
-            System.IO.StreamReader file = new System.IO.StreamReader(FilePath);
+            //two characters to hold values in order to check
+            //if a comment declaration has started anywhere in the line
+            char newChar = '\0', preChar = '\0';
 
-            while((line = file.ReadLine()) != null)
+            for (int i = 0; i < FilePath.Length; i++)
             {
-                //check to make sure line is longer then 2 characters as to not get an error
-                if (line.Length >= 2)
+                //Open up the file
+                System.IO.StreamReader file = new System.IO.StreamReader(FilePath[i]);
+
+                while ((line = file.ReadLine()) != null)
                 {
-                    //Get first two characters of the line
-                    string firstTwo = line.Substring(0, 2);
-                    //Check to see if the first two characters are declaring a commented line
-                    if (firstTwo == "//")
+                    //check to make sure line is longer then 2 characters as to not get an error
+                    if (line.Length >= 2)
                     {
-                        commentedLines.Add(line);
+                        //Get first two characters of the line
+                        string firstTwo = line.Substring(0, 2);
+                        //Check to see if the first two characters are declaring a commented line
+                        if (firstTwo == "//")
+                        {
+                            commentedLines.Add(line);
+                        }
+
+                        //if not then check the rest of the line for a comment
+                        else
+                        {
+
+                            //loop through and check to see if a comment is made anywhere in the line
+                            for (int j = 0; j < line.Length; j++)
+                            {
+                                newChar = line[j];
+
+                                //make sure the previous character isn't nothing
+                                if (preChar != '\0')
+                                {
+                                    //check to see if the previous character and the newest characters match.
+                                    //if they do then a comment has begun
+                                    if(preChar == newChar && j > 0)
+                                    {
+                                        commentedLines.Add(line.Remove(0, j-2));
+                                    }
+                                }
+
+                                //set previous character to the character we just went over in the line
+                                //set new character to the next character in the line
+                                else 
+                                {
+                                    preChar = newChar;
+                                }
+                            }
+
+                            preChar = '\0';
+                            newChar = '\0';
+                        }
                     }
-                    //if not then continue through the loop
+
+                    //if the length is less then 2 then continue through the loop
                     else
                     {
-                        continue;
                     }
+
+                    //repeat till no other lines in the file
                 }
 
-                //if the length is less then 2 then continue through the loop
-                else
-                {
-                }
-                
-                //repeat till no other lines in the file
+                //close the file
+                file.Close();
             }
-
-            //close the file
-            file.Close();
 
             //return the list of commented lines
             return commentedLines;
