@@ -35,7 +35,7 @@ namespace Knight_Documenter_C
     //Enum to differentiate between documentation styles
     //Starting with comment extraction and then from there i'll add more as 
     //I figure out different documentation types and how to impliment them.
-    enum Method { eComments, eOther };
+    enum Method { eComments, eClasses, eOther };
 
     class Reader
     {
@@ -65,6 +65,12 @@ namespace Knight_Documenter_C
                     //return all commented lines from file (commented via "//")
                     return returnedLines;
 
+                case Method.eClasses:
+                    //Call function to extract all classes
+                    returnedLines = GetAllClasses(filePaths);
+                    //return the extracted class references
+                    return returnedLines;
+
                 default:
                     return null;
             }
@@ -86,6 +92,7 @@ namespace Knight_Documenter_C
             //if a comment declaration has started anywhere in the line
             char newChar = '\0', preChar = '\0';
 
+            //Loop through each file
             for (int i = 0; i < FilePath.Length; i++)
             {
                 //Open up the file
@@ -121,6 +128,7 @@ namespace Knight_Documenter_C
                                     if(preChar == newChar && j > 0)
                                     {
                                         commentedLines.Add(line.Remove(0, j-2));
+                                        
                                     }
                                 }
 
@@ -154,6 +162,43 @@ namespace Knight_Documenter_C
 
             //return the list of commented lines
             return commentedLines;
+        }
+
+
+        //This function call is used to extract class names
+        /*
+         * This function is used to cycle through all given files
+         * and return a list of Class Names
+         */
+        private List<string> GetAllClasses(string[] filePaths)
+        {
+            //String to temporarily store any lines that contain "class"
+            string line; 
+            List<string> classes = new List<string>();
+
+            //Loop through each filepath given
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                //Open up the file
+                System.IO.StreamReader file = new System.IO.StreamReader(filePaths[i]);
+
+                //Loop through current file until there are no more lines to read
+                while ((line = file.ReadLine()) != null)
+                {
+                    //if the line contains class or Class then add it to the List to be returned
+                    if(line.Contains("class") || line.Contains("Class"))
+                    {
+                        classes.Add(line);
+                    }
+
+                    else 
+                    {
+                        //Continue through the loop if there is no reference to a class
+                    }
+                }
+            }
+
+            return classes;
         }
 
     }

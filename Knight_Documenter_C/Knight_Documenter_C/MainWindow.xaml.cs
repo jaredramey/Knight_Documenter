@@ -40,7 +40,20 @@ namespace Knight_Documenter_C
             }
             else
             {
-                MessageBox.Show("ERROR: No File Selected");
+                MessageBox.Show("ERROR: No File(s) Selected!");
+            }
+        }
+
+        private void ClassExtraction()
+        {
+            if(Selected_File.Text != "")
+            {
+                Results = reader.OperateOnFile(fileNames, Method.eClasses);
+            }
+
+            else 
+            {
+                MessageBox.Show("ERROR: No File(s) Selected!");
             }
         }
 
@@ -69,6 +82,14 @@ namespace Knight_Documenter_C
                     TestCommentExtractor();
                     ResultListBox.ItemsSource = Results;
                     //Double checking to make sure the operation finished
+                    MessageBox.Show("Operation Compleeted");
+                    break;
+
+                case "Class Extraction":
+                    //Call function to operate via class extraction
+                    ClassExtraction();
+                    ResultListBox.ItemsSource = Results;
+                    //Let the user know that the operation has compleeted
                     MessageBox.Show("Operation Compleeted");
                     break;
 
@@ -103,13 +124,6 @@ namespace Knight_Documenter_C
             if(result == true)
             {
                 //open document(s)
-                //string fileName = dlg.FileName;
-                /*
-                 * Trying to figure out how to display multiple strings
-                 * in a textbox. Internet on the train started to become iffy
-                 * though so just making a hacky solution until I can make
-                 * a permanent solution.
-                 */
                 fileNames = dlg.FileNames;
                 for (int i = 0; i < fileNames.Length; i++)
                 {
