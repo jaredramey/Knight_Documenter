@@ -13,9 +13,28 @@ namespace Knight_Documenter_C
      * from C# and Cpp files (Reading from .txt format)
      */
 
+    /*
+     * Documentation Types so far:
+     * + Comment Extraction
+     */
+    //=================================\\
+    /*
+     * Possible Documentation Types to add
+     * - Save Comment Extraction as a .txt/ .pdf file
+     * - Class Diagram
+     * - XAML Diagram
+     * - Program Flow Diagram
+     * 
+     * ================ *
+     * Need to do research on the following:
+     * = Open all C++/ C# files off a .sln fileioo
+     * = Drawing to a picture
+     * = Other forms of Documentation
+     */
+
     //Enum to differentiate between documentation styles
     //Starting with comment extraction and then from there i'll add more as 
-    //I figure out what I want to include
+    //I figure out different documentation types and how to impliment them.
     enum Method { eComments, eOther };
 
     class Reader
@@ -54,11 +73,8 @@ namespace Knight_Documenter_C
 
         //Function to get all commented lines
         /*
-         * Will have to update this function later
-         * Need to loop through the entire line to check if "//" is ever
-         * done later in the line and pull all characters after that
-         * just in case someone decides to comment on a line of coode after
-         * the line is done
+         * This function can now extract all comments in a file
+         * declared via "//"
          */
         private List<string> CommentExtraction(string[] FilePath)
         {
@@ -116,6 +132,9 @@ namespace Knight_Documenter_C
                                 }
                             }
 
+                            //Set the previousChar and newChar to thier default value
+                            //in order to prevent character matching between the end
+                            //of one line and the start of another
                             preChar = '\0';
                             newChar = '\0';
                         }
