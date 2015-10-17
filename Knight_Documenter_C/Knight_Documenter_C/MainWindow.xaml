@@ -25,6 +25,7 @@
         <ComboBox Name="FunctionSelection" Text="Select a Function" Margin="10,20,350,269" SelectedIndex="0">
             <ComboBoxItem Name="Default">Select A Function</ComboBoxItem>
             <ComboBoxItem Name="CommentExtraction">Comment Extraction</ComboBoxItem>
+            <ComboBoxItem Name="Class_Extraction">Class Extraction</ComboBoxItem>
             <ComboBoxItem Name="TestItem2">Function 2</ComboBoxItem>
         </ComboBox>
         

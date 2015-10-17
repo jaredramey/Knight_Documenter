@@ -68,6 +68,11 @@ namespace Knight_Documenter_C
                 case Method.eClasses:
                     //Call function to extract all classes
                     returnedLines = GetAllClasses(filePaths);
+                    /*
+                     * Placing this function here temporarily in order
+                     * to test it as it's created.
+                     */
+                    GetClassFuncs(filePaths);
                     //return the extracted class references
                     return returnedLines;
 
@@ -199,6 +204,54 @@ namespace Knight_Documenter_C
             }
 
             return classes;
+        }
+
+        /*
+         * This function is to be designed for pulling out all functions of classes and the classes themselfs.
+         * After that it is to pair each function to it's respective class in a dictionary.
+         * ===================================================================================================
+         * Namely this function in particular is for the use of extracting information out of files for
+         * the Draw class so it can populate all the class squares(?) it makes with text to make it more
+         * readable.
+         * 
+         * (?) -- Not sure yet as to if that's how i'm going to roll the class diagram as of yet. Still
+         *        need to research class diagrams furthur in order to make sure that the diagrams my tool
+         *        creates are up to the standards of the industry.
+         */
+        public Dictionary<string, string> GetClassFuncs(string[] filePaths)
+        {
+            //temp string to store located value
+            string line;
+            Dictionary<string, string> result = new Dictionary<string, string>();
+
+            //Loop through each filepath given
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                //Open up the file
+                System.IO.StreamReader file = new System.IO.StreamReader(filePaths[i]);
+
+                //int to hold amount of lines there are in the file currently being worked on
+                int linesInFile = 0;
+                while ((line = file.ReadLine()) != null)
+                {
+                    linesInFile++;
+                }
+
+                //Loop through current file until there are no more lines to read
+                while ((line = file.ReadLine()) != null)
+                {
+                    if(line.Contains("Class"))
+                    {
+                        for (int j = 0; j < linesInFile; j++ )
+                        {
+                            //removing
+                            result.Add(line.Remove(0, 6), "class");
+                        }
+                    }
+                     
+                }
+            }
+            return result;
         }
 
     }

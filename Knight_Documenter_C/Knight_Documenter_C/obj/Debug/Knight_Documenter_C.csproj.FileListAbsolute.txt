@@ -24,3 +24,5 @@ C:\Users\Oezaxs\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Do
 C:\Users\Oezaxs\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.g.resources
 C:\Users\Oezaxs\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.Properties.Resources.resources
 C:\Users\Oezaxs\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.csproj.GenerateResource.Cache
+C:\Users\Oezaxs\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\canvasWindow.baml
+C:\Users\Oezaxs\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\canvasWindow.g.cs

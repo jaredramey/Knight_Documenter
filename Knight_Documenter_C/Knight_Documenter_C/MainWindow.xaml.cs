@@ -127,7 +127,7 @@ namespace Knight_Documenter_C
                 fileNames = dlg.FileNames;
                 for (int i = 0; i < fileNames.Length; i++)
                 {
-                    Selected_File.Text += "\n" + fileNames[i];
+                    Selected_File.Text += fileNames[i] + "\n";
                 }
             }
         }
