@@ -6,3 +6,6 @@ This is not a commented line of code
 This is not a commented line of code //This is a comment after a line
 
 class foo;
+
+
+public int myFunc(int foo, int bar)

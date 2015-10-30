@@ -35,7 +35,7 @@ namespace Knight_Documenter_C
     //Enum to differentiate between documentation styles
     //Starting with comment extraction and then from there i'll add more as 
     //I figure out different documentation types and how to impliment them.
-    enum Method { eComments, eClasses, eOther };
+    enum Method { eComments, eClasses, eClassFunc, eOther };
 
     class Reader
     {
@@ -75,6 +75,8 @@ namespace Knight_Documenter_C
                     GetClassFuncs(filePaths);
                     //return the extracted class references
                     return returnedLines;
+
+
 
                 default:
                     return null;
@@ -218,6 +220,12 @@ namespace Knight_Documenter_C
          *        need to research class diagrams furthur in order to make sure that the diagrams my tool
          *        creates are up to the standards of the industry.
          */
+        //|====================================================================================================|\\
+        /*
+         * Ect. Thoughts:
+         * - For more user diversity should I set a flag between pulling out just the fucntion name
+         *   or pulling both the function name and what the function calls for?
+         */
         public Dictionary<string, string> GetClassFuncs(string[] filePaths)
         {
             //temp string to store located value
@@ -242,11 +250,20 @@ namespace Knight_Documenter_C
                 {
                     if(line.Contains("Class"))
                     {
-                        for (int j = 0; j < linesInFile; j++ )
-                        {
+                        /*Had a for loop sitting here for no apparent reason(?)
+                         * If I figure out why it was here later then i'll put it back
+                         */
                             //removing
-                            result.Add(line.Remove(0, 6), "class");
-                        }
+                            result.Add("class", line.Remove(0, 6));
+                    }
+
+                    /*
+                     * Basic function extraction
+                     * Will have to find a better way to parse for functions
+                    */
+                    else if (line.Contains("public") || line.Contains("private") || line.Contains("protected") || line.Contains("::"))
+                    {
+                        result.Add("func", line);
                     }
                      
                 }

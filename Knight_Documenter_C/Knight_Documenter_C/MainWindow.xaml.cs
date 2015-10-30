@@ -22,6 +22,7 @@ namespace Knight_Documenter_C
     {
         //Initialize Reader class
         Reader reader = new Reader();
+        Draw draw = new Draw();
 
         public List<string> Results = new List<string>();
 
@@ -52,6 +53,23 @@ namespace Knight_Documenter_C
             }
 
             else 
+            {
+                MessageBox.Show("ERROR: No File(s) Selected!");
+            }
+        }
+
+        private void ClassFuncExtraction_Test()
+        {
+            if (Selected_File.Text != "")
+            {
+                Dictionary<string, string> tempDictionary = reader.GetClassFuncs(fileNames);
+                for (int i = 0; i < tempDictionary.Count; i++ )
+                {
+
+                }
+            }
+
+            else
             {
                 MessageBox.Show("ERROR: No File(s) Selected!");
             }
