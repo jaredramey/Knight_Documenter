@@ -20,6 +20,7 @@ private List<string> GetAllClasses(string[] filePaths)
 					}
 
                     //repeat till no other lines in the file
+					
                 }
 	}
 }

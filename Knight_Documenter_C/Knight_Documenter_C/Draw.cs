@@ -46,7 +46,10 @@ namespace Knight_Documenter_C
                     //default case just in case the user some how forces
                     //through function selection
                 default:
-                    
+                    /*
+                     * Need to find a way to make a message box showing an error
+                     * Or should I push up the error to the main window to spit it out?
+                     */
                     break;
             }
         }
