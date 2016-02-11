@@ -32,11 +32,12 @@ namespace Knight_Documenter_C
             {
                     //If the user wants a class diagram
                 case VisualMethod.eClassDiag:
-                    
+                    CreateClassDiag();
                     break;
 
                     //If the user wants a XAML diagram
                 case VisualMethod.eXAMLDaig:
+                    CreateXAMLDiag();
                     break;
 
                     //Filler enum until I know what other functions i'm making
@@ -60,12 +61,28 @@ namespace Knight_Documenter_C
          */
         private void CreateClassDiag()
         {
-            
+            /*
+             * From my understanding of how dictionaries work (so far), the idea
+             * is to fill out the dictionary like [className][classFunction]. So I should
+             * be able to cycle through that and build the basis of a class diagram
+             * (ie. build and fill class 'boxes'). From there I need to figure out how to capture
+             * references from one class function to another while i'm parssing all the info. If I
+             * get that then it should just be as simple as drawing a line from one class to another.
+             */
         }
 
         private void CreateXAMLDiag()
         {
 
+        }
+
+        private void SaveDiag()
+        {
+            /*
+             * this function should be called in order to save the diagram that has been drawn
+             * to a specified path. Maybe create a default path for a folder that the tool creates
+             * upon install and let the user have the choice of editing the path from there?
+             */
         }
 
     }

@@ -250,7 +250,7 @@ namespace Knight_Documenter_C
                 {
                     if(line.Contains("Class"))
                     {
-                        /*Had a for loop sitting here for no apparent reason(?)
+                        /* Had a for loop sitting here for no apparent reason(?)
                          * If I figure out why it was here later then i'll put it back
                          */
                             //removing
