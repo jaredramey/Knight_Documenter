@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 
 namespace Knight_Documenter_C
@@ -11,13 +18,13 @@ namespace Knight_Documenter_C
      * This class is to be designed for the use of taking extracted data from .cs/.cpp files
      * and creating any visual type of documentation.
      */
-    
 
     //Enum to differentiate (<-- spell check that later) in between the different function calls
     enum VisualMethod { eClassDiag, eXAMLDaig, eOther};
 
     class Draw
     {
+        canvasWindow myCanvas;
 
         public Dictionary<string, string> ClassFuncs = new Dictionary<string,string>();
 
@@ -25,14 +32,14 @@ namespace Knight_Documenter_C
          * Temp placement of function until I know what the return type is
          * and how to proceede with function
          */
-        public void OperateOnFiles(VisualMethod method)
+        public void OperateOnFiles(VisualMethod method, Dictionary<string, string> DictionaryToOperateOn)
         {
 
             switch(method)
             {
                     //If the user wants a class diagram
                 case VisualMethod.eClassDiag:
-                    CreateClassDiag();
+                    CreateClassDiag(DictionaryToOperateOn);
                     break;
 
                     //If the user wants a XAML diagram
@@ -59,8 +66,10 @@ namespace Knight_Documenter_C
          * Temp placement of function until I know what the return type is
          * and how to proceede with function
          */
-        private void CreateClassDiag()
+        private List<string> CreateClassDiag(Dictionary<string, string> ClassDictionary)
         {
+            List<string> returnedLines = new List<string>();
+
             /*
              * From my understanding of how dictionaries work (so far), the idea
              * is to fill out the dictionary like [className][classFunction]. So I should
@@ -69,6 +78,40 @@ namespace Knight_Documenter_C
              * references from one class function to another while i'm parssing all the info. If I
              * get that then it should just be as simple as drawing a line from one class to another.
              */
+
+            //TODO
+            /*
+             * Create New Window
+             * Add text boxes to window
+             *      LAYOUT:
+             *          _________________
+             *          | Class Name    |
+             *          |---------------|
+             *          | Function One  |
+             *          | Function Two  |
+             *          | Ect. Function |
+             *          |---------------|
+             *  Figure out a way to draw a line connecting classes that
+             *  interact with each other
+             *  Display all that info to the user via the window
+             *  Figure out a way to save that as a either a .jpg or as a .png
+             */
+
+                //TODO: Figure out how to loop through each key and then each value in each key.
+            foreach(KeyValuePair<string, string> entry in ClassDictionary)
+            {
+                //add current key + value to a list for debuggin purposes
+                returnedLines.Add(entry.Key + entry.Value);
+
+                TextBlock ClassBox = new TextBlock();
+                ClassBox.Text = entry.Key + entry.Value;
+            }
+
+            //show window and wait to continue function till that window closes
+            myCanvas.ShowDialog();
+
+
+            return returnedLines;
         }
 
         private void CreateXAMLDiag()
