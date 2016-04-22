@@ -79,6 +79,18 @@ namespace Knight_Documenter_C
              * get that then it should just be as simple as drawing a line from one class to another.
              */
 
+            /* EDIT: =============================================================================================
+             * Might have to scrap the dictionary idea and plan to use reflection. It might work better if I     |
+             * just have a ParsedClass class and have a list of function names within that. Then I don't have    |
+             * to mess around with Dictionaries since they're something I don't know and i'll be able to visualy |
+             * see what should be in the class bassed off of my example text files that i'm using for testing.   |
+             * 
+             * ALSO:
+             * Need to move this function over to the reader class. This class should be doing nothing but taking
+             * the data I extract and draw it onto a new window. Might add the save function in here as well but
+             * there should be no harm done in putting the save function in this class.
+             */
+
             //TODO
             /*
              * Create New Window

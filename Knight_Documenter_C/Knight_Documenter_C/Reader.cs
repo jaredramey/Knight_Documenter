@@ -271,5 +271,35 @@ namespace Knight_Documenter_C
             return result;
         }
 
+        /*
+         * This function is to be used to get all classes and all their respected functions from
+         * user defined files and then pass that data off to the draw class. The way i'm going to try doing this is through relfection
+         */
+        private List<ParsedClasses> ReflectedClassFuncExtraction(string[] filePaths)
+        {
+            List<ParsedClasses> parsedData = new List<ParsedClasses>();
+
+            /*
+             * TODO:
+             *  - Parse for all classes in file
+             *  - Set List of parsed classes to however many classes there are
+             *  - loop through file and capture any functions and add them to
+             *    the respected classes List of Function names
+             */
+
+            return parsedData;
+        }
+
     }
+}
+
+
+/*
+ * This Public class is set up to be used in reflecting
+ * data from text files in order to create class diagrams
+ */
+public class ParsedClasses
+{
+    public string className { get; set; }
+    public List<String> functionNames;
 }
