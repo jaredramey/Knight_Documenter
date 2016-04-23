@@ -208,6 +208,42 @@ namespace Knight_Documenter_C
             return classes;
         }
 
+        //This function call is used to extract class names
+        /*
+         * This function is used to cycle through all given files
+         * and return a list of Class Names
+         */
+        private List<string> GetAllFunctions(string[] filePaths)
+        {
+            //String to temporarily store any lines that contain a function
+            string line;
+            List<string> functions = new List<string>();
+
+            //Loop through each filepath given
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                //Open up the file
+                System.IO.StreamReader file = new System.IO.StreamReader(filePaths[i]);
+
+                //Loop through current file until there are no more lines to read
+                while ((line = file.ReadLine()) != null)
+                {
+                    //if the line contains class or Class then add it to the List to be returned
+                    if (line.Contains("class") || line.Contains("Class"))
+                    {
+                        functions.Add(line);
+                    }
+
+                    else
+                    {
+                        //Continue through the loop if there is no reference to a class
+                    }
+                }
+            }
+
+            return functions;
+        }
+
         /*
          * This function is to be designed for pulling out all functions of classes and the classes themselfs.
          * After that it is to pair each function to it's respective class in a dictionary.
@@ -279,15 +315,22 @@ namespace Knight_Documenter_C
         {
             List<ParsedClasses> parsedData = new List<ParsedClasses>();
 
-            /*
-             * TODO:
-             *  - Parse for all classes in file
-             *  - Set List of parsed classes to however many classes there are
-             *  - loop through file and capture any functions and add them to
-             *    the respected classes List of Function names
-             */
+            Dictionary<string, string> classFuncs = GetClassFuncs(filePaths);
 
-            return parsedData;
+            for (int i = 0; i < classFuncs.Count; i++ )
+            {
+                
+            }
+
+                /*
+                 * TODO:
+                 *  - Parse for all classes in file
+                 *  - Set List of parsed classes to however many classes there are
+                 *  - loop through file and capture any functions and add them to
+                 *    the respected classes List of Function names
+                 */
+
+                return parsedData;
         }
 
     }
