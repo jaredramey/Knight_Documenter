@@ -91,6 +91,7 @@ namespace Knight_Documenter_C
          * This function can now extract all comments in a file
          * declared via "//"
          */
+        #region Comment Extraction
         private List<string> CommentExtraction(string[] FilePath)
         {
             //A string to temporarily store any lines starting with "//"
@@ -172,6 +173,7 @@ namespace Knight_Documenter_C
             //return the list of commented lines
             return commentedLines;
         }
+        #endregion
 
 
         //This function call is used to extract class names
@@ -179,6 +181,7 @@ namespace Knight_Documenter_C
          * This function is used to cycle through all given files
          * and return a list of Class Names
          */
+        #region Class Extraction
         private List<string> GetAllClasses(string[] filePaths)
         {
             //String to temporarily store any lines that contain "class"
@@ -209,12 +212,14 @@ namespace Knight_Documenter_C
 
             return classes;
         }
+        #endregion
 
         //This function call is used to extract class names
         /*
          * This function is used to cycle through all given files
          * and return a list of Class Names
          */
+        #region Function Name Extraction
         private List<string> GetAllFunctions(string[] filePaths)
         {
             //String to temporarily store any lines that contain a function
@@ -245,7 +250,9 @@ namespace Knight_Documenter_C
 
             return functions;
         }
+        #endregion
 
+        #region Out Dated class-func extraction (Needs to be moved to "code snippets not in use" file
         /*
          * This function is to be designed for pulling out all functions of classes and the classes themselfs.
          * After that it is to pair each function to it's respective class in a dictionary.
@@ -308,6 +315,7 @@ namespace Knight_Documenter_C
             }
             return result;
         }
+        #endregion
 
         /*
          * This function is to be used to get all classes and all their respected functions from
