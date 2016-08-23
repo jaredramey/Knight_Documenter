@@ -8,6 +8,7 @@ using System.IO;
 
 namespace Knight_Documenter_C
 {
+    #region Opening Comment & Info
     /*
      * This class is to be designed for the use of opening, reading and extracting information/ text
      * from C# and Cpp files (Reading from .txt format)
@@ -31,6 +32,7 @@ namespace Knight_Documenter_C
      * = Drawing to a picture
      * = Other forms of Documentation
      */
+    #endregion
 
     //Enum to differentiate between documentation styles
     //Starting with comment extraction and then from there i'll add more as 
