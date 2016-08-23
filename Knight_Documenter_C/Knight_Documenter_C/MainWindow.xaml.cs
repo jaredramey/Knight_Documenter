@@ -62,11 +62,14 @@ namespace Knight_Documenter_C
         {
             if (Selected_File.Text != "")
             {
-                Dictionary<string, string> tempDictionary = reader.GetClassFuncs(fileNames);
-                for (int i = 0; i < tempDictionary.Count; i++ )
-                {
+                MessageBox.Show("Class Function Extraction Not Working Yet...");
 
-                }
+                //Will update this once I have a working function
+            //    Dictionary<string, string> tempDictionary = reader.GetClassFuncs(fileNames);
+            //    for (int i = 0; i < tempDictionary.Count; i++ )
+            //    {
+
+            //    }
             }
 
             else

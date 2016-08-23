@@ -7,5 +7,7 @@ This is not a commented line of code //This is a comment after a line
 
 class foo;
 
+private class foobar
+
 
 public int myFunc(int foo, int bar)

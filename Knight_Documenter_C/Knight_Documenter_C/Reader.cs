@@ -200,6 +200,23 @@ namespace Knight_Documenter_C
                     //if the line contains class or Class then add it to the List to be returned
                     if(line.Contains("class") || line.Contains("Class"))
                     {
+                        //remove public or private to just get the name
+                        if(line.Contains("public"))
+                        {
+                            line = line.Remove(0, 6);
+                        }
+                        else if(line.Contains("private"))
+                        {
+                            line = line.Remove(0, 7);
+                        }
+
+                        //remove class to get just the name
+                        if(line.Contains("class"))
+                        {
+                            line = line.Remove(0, 5);
+                        }
+                        
+                        //Once we're left with just the name add it to the class list
                         classes.Add(line);
                     }
 
