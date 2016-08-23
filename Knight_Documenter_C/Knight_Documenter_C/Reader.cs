@@ -269,7 +269,7 @@ namespace Knight_Documenter_C
         }
         #endregion
 
-        #region Out Dated class-func extraction (Needs to be moved to "code snippets not in use" file
+        #region Outdated class-func extraction (Needs to be moved to "code snippets not in use" file
         /*
          * This function is to be designed for pulling out all functions of classes and the classes themselfs.
          * After that it is to pair each function to it's respective class in a dictionary.
@@ -340,13 +340,21 @@ namespace Knight_Documenter_C
          */
         private List<ParsedClasses> ReflectedClassFuncExtraction(string[] filePaths)
         {
-            List<ParsedClasses> parsedData = new List<ParsedClasses>();
+            //String to temporarily store any lines that contain "class"
+            string line; 
+            List<ParsedClasses> results = new List<ParsedClasses>();
 
-            Dictionary<string, string> classFuncs = GetClassFuncs(filePaths);
-
-            for (int i = 0; i < classFuncs.Count; i++ )
+            //Loop through each filepath given
+            for (int i = 0; i < filePaths.Length; i++)
             {
-                
+                //Open up the file
+                System.IO.StreamReader file = new System.IO.StreamReader(filePaths[i]);
+
+                //Loop through current file until there are no more lines to read
+                while ((line = file.ReadLine()) != null)
+                {
+
+                }
             }
 
                 /*
@@ -357,7 +365,7 @@ namespace Knight_Documenter_C
                  *    the respected classes List of Function names
                  */
 
-                return parsedData;
+                return results;
         }
 
     }
