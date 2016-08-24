@@ -58,18 +58,12 @@ namespace Knight_Documenter_C
             }
         }
 
-        private void ClassFuncExtraction_Test()
+        private void ClassFuncExtraction()
         {
             if (Selected_File.Text != "")
             {
                 MessageBox.Show("Class Function Extraction Not Working Yet...");
-
-                //Will update this once I have a working function
-            //    Dictionary<string, string> tempDictionary = reader.GetClassFuncs(fileNames);
-            //    for (int i = 0; i < tempDictionary.Count; i++ )
-            //    {
-
-            //    }
+                Results = reader.OperateOnFile(fileNames, Method.eClassFunc);
             }
 
             else
@@ -136,6 +130,7 @@ namespace Knight_Documenter_C
                     //Test case to test other functions occuring
                 case "Function 2":
                     //Just telling myself another function was selected
+                    ClassFuncExtraction();
                     MessageBox.Show(selectedFunction);
                     break;
 

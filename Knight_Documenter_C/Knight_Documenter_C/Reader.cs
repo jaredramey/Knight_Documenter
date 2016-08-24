@@ -70,17 +70,16 @@ namespace Knight_Documenter_C
                 case Method.eClasses:
                     //Call function to extract all classes
                     returnedLines = GetAllClasses(filePaths);
-                    /*
-                     * Placing this function here temporarily in order
-                     * to test it as it's created.
-                     */
-                    GetClassFuncs(filePaths);
                     //return the extracted class references
                     return returnedLines;
 
                 case Method.eFunc:
                     returnedLines = GetAllFunctions(filePaths);
                     return returnedLines;
+
+                case Method.eClassFunc:
+                    ReflectedClassFuncExtraction(filePaths);
+                    return null;
 
                 default:
                     return null;
@@ -364,7 +363,7 @@ namespace Knight_Documenter_C
                 //Loop through current file until there are no more lines to read
                 while ((line = file.ReadLine()) != null)
                 {
-                    if (line.Contains("class"))
+                    if (line.Contains("class") && (line.Contains("public") || line.Contains("private")))
                     {
                         #region Clean up class name
                         //remove public or private to just get the name
@@ -387,13 +386,25 @@ namespace Knight_Documenter_C
                         //If the new class name doesn't match current class then reset it
                         if (newClass.className != line)
                         {
+                            if (newClass != null)
+                            {
+                                //add the new class
+                                results.Add(newClass);
+                            }
                             //Set newClass to an empty parssed class so no functions copy over
                             newClass = new ParsedClasses();
                             newClass.className = line;
                         }
-
-
                     }
+                        //Search through for functions and add them to class's functions
+                        if ((line.Contains("public") || line.Contains("private") || line.Contains("void")) && (line.Contains(");") || line.Contains(")")))
+                        {
+                            if (newClass != null)
+                            {
+                                newClass.functionNames.Add(line);
+                            }
+                        }
+                    
                 }
             }
             return results;
