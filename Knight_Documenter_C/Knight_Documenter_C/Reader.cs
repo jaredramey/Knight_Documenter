@@ -50,16 +50,16 @@ namespace Knight_Documenter_C
 
         //Open file and call other methods as necessary for what is requested by user
         //ie: Comment extraction would be called as OpenFile("filePath", eComments)
-                        /*=============================================================================================================*/
-                        /*Main function that all data/ functions will be passed through for reading and extracting data from text files*/
-                        /*=============================================================================================================*/
+        /*=============================================================================================================*/
+        /*Main function that all data/ functions will be passed through for reading and extracting data from text files*/
+        /*=============================================================================================================*/
         public List<string> OperateOnFile(string[] filePaths, Method method)
         {
             //List to return
             List<string> returnedLines;
 
             //Switch the enum for whatever is requested
-            switch(method)
+            switch (method)
             {
                 case Method.eComments:
                     //Call function to extract all commented lines
@@ -135,16 +135,16 @@ namespace Knight_Documenter_C
                                 {
                                     //check to see if the previous character and the newest characters match.
                                     //if they do then a comment has begun
-                                    if(preChar == newChar && j > 0)
+                                    if (preChar == newChar && j > 0)
                                     {
-                                        commentedLines.Add(line.Remove(0, j-2));
-                                        
+                                        commentedLines.Add(line.Remove(0, j - 2));
+
                                     }
                                 }
 
                                 //set previous character to the character we just went over in the line
                                 //set new character to the next character in the line
-                                else 
+                                else
                                 {
                                     preChar = newChar;
                                 }
@@ -185,7 +185,7 @@ namespace Knight_Documenter_C
         private List<string> GetAllClasses(string[] filePaths)
         {
             //String to temporarily store any lines that contain "class"
-            string line; 
+            string line;
             List<string> classes = new List<string>();
 
             //Loop through each filepath given
@@ -198,29 +198,29 @@ namespace Knight_Documenter_C
                 while ((line = file.ReadLine()) != null)
                 {
                     //if the line contains class or Class then add it to the List to be returned
-                    if(line.Contains("class") || line.Contains("Class"))
+                    if (line.Contains("class"))
                     {
                         //remove public or private to just get the name
-                        if(line.Contains("public"))
+                        if (line.Contains("public"))
                         {
                             line = line.Remove(0, 6);
                         }
-                        else if(line.Contains("private"))
+                        else if (line.Contains("private"))
                         {
                             line = line.Remove(0, 7);
                         }
 
                         //remove class to get just the name
-                        if(line.Contains("class"))
+                        if (line.Contains("class"))
                         {
                             line = line.Remove(0, 5);
                         }
-                        
+
                         //Once we're left with just the name add it to the class list
                         classes.Add(line);
                     }
 
-                    else 
+                    else
                     {
                         //Continue through the loop if there is no reference to a class
                     }
@@ -234,7 +234,7 @@ namespace Knight_Documenter_C
         //This function call is used to extract class names
         /*
          * This function is used to cycle through all given files
-         * and return a list of Class Names
+         * and return a list of Function names
          */
         #region Function Name Extraction
         private List<string> GetAllFunctions(string[] filePaths)
@@ -252,15 +252,16 @@ namespace Knight_Documenter_C
                 //Loop through current file until there are no more lines to read
                 while ((line = file.ReadLine()) != null)
                 {
-                    //if the line contains class or Class then add it to the List to be returned
-                    if (line.Contains("class") || line.Contains("Class"))
+                    //if the line contains a function then add it to the lise
+                    //integer types
+                    if (line.Contains("public int"))
                     {
                         functions.Add(line);
                     }
 
                     else
                     {
-                        //Continue through the loop if there is no reference to a class
+                        //Continue through the loop if there is no reference to a function
                     }
                 }
             }
@@ -310,13 +311,13 @@ namespace Knight_Documenter_C
                 //Loop through current file until there are no more lines to read
                 while ((line = file.ReadLine()) != null)
                 {
-                    if(line.Contains("Class"))
+                    if (line.Contains("Class"))
                     {
                         /* Had a for loop sitting here for no apparent reason(?)
                          * If I figure out why it was here later then i'll put it back
                          */
-                            //removing
-                            result.Add("class", line.Remove(0, 6));
+                        //removing
+                        result.Add("class", line.Remove(0, 6));
                     }
 
                     /*
@@ -327,7 +328,7 @@ namespace Knight_Documenter_C
                     {
                         result.Add("func", line);
                     }
-                     
+
                 }
             }
             return result;
@@ -338,10 +339,19 @@ namespace Knight_Documenter_C
          * This function is to be used to get all classes and all their respected functions from
          * user defined files and then pass that data off to the draw class. The way i'm going to try doing this is through relfection
          */
+
+        /*
+         * TODO:
+         *  - Parse for all classes in file
+         *  - Set List of parsed classes to however many classes there are
+         *  - loop through file and capture any functions and add them to
+         *    the respected classes List of Function names
+         */
         private List<ParsedClasses> ReflectedClassFuncExtraction(string[] filePaths)
         {
             //String to temporarily store any lines that contain "class"
-            string line; 
+            string line;
+            ParsedClasses newClass = new ParsedClasses();
             List<ParsedClasses> results = new List<ParsedClasses>();
 
             //Loop through each filepath given
@@ -353,31 +363,50 @@ namespace Knight_Documenter_C
                 //Loop through current file until there are no more lines to read
                 while ((line = file.ReadLine()) != null)
                 {
+                    if (line.Contains("class"))
+                    {
+                        #region Clean up class name
+                        //remove public or private to just get the name
+                        if (line.Contains("public"))
+                        {
+                            line = line.Remove(0, 6);
+                        }
+                        else if (line.Contains("private"))
+                        {
+                            line = line.Remove(0, 7);
+                        }
 
+                        //remove class to get just the name
+                        if (line.Contains("class"))
+                        {
+                            line = line.Remove(0, 5);
+                        }
+                        #endregion
+
+                        //If the new class name doesn't match current class then reset it
+                        if (newClass.className != line)
+                        {
+                            //Set newClass to an empty parssed class so no functions copy over
+                            newClass = new ParsedClasses();
+                            newClass.className = line;
+                        }
+
+
+                    }
                 }
             }
-
-                /*
-                 * TODO:
-                 *  - Parse for all classes in file
-                 *  - Set List of parsed classes to however many classes there are
-                 *  - loop through file and capture any functions and add them to
-                 *    the respected classes List of Function names
-                 */
-
-                return results;
+            return results;
         }
-
     }
-}
 
 
-/*
- * This Public class is set up to be used in reflecting
- * data from text files in order to create class diagrams
- */
-public class ParsedClasses
-{
-    public string className { get; set; }
-    public List<String> functionNames;
+    /*
+     * This Public class is set up to be used in reflecting
+     * data from text files in order to create class diagrams
+     */
+    public class ParsedClasses
+    {
+        public string className { get; set; }
+        public List<String> functionNames;
+    }
 }

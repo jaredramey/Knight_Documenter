@@ -12,7 +12,7 @@ private class foobar
 	//this is a test class
 	private var;
 	
-	public in TestFunc(int foo, int bar)
+	public int TestFunc(int foo, int bar)
 	{
 	
 	}
