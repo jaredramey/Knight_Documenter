@@ -24,8 +24,9 @@
         <!-- Testing use of combobox as a drop down menu to allow user to select what they wish to do -->
         <ComboBox Name="FunctionSelection" Text="Select a Function" Margin="10,20,350,269" SelectedIndex="0">
             <ComboBoxItem Name="Default">Select A Function</ComboBoxItem>
-            <ComboBoxItem Name="CommentExtraction">Comment Extraction</ComboBoxItem>
+            <ComboBoxItem Name="Comment_Extraction">Comment Extraction</ComboBoxItem>
             <ComboBoxItem Name="Class_Extraction">Class Extraction</ComboBoxItem>
+            <ComboBoxItem Name="Function_Extraction">Function Extraction</ComboBoxItem>
             <ComboBoxItem Name="TestItem2">Function 2</ComboBoxItem>
         </ComboBox>
         

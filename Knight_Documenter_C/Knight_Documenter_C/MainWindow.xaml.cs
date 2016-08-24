@@ -78,6 +78,19 @@ namespace Knight_Documenter_C
             }
         }
 
+        private void FunctionExtraction()
+        {
+            if (Selected_File.Text != "")
+            {
+                Results = reader.OperateOnFile(fileNames, Method.eFunc);
+            }
+
+            else
+            {
+                MessageBox.Show("ERROR: No File(s) Selected!");
+            }
+        }
+
         private void CommentExtraction_Test_Click(object sender, RoutedEventArgs e)
         {
             //Getting the string set for later use
@@ -111,6 +124,12 @@ namespace Knight_Documenter_C
                     ClassExtraction();
                     ResultListBox.ItemsSource = Results;
                     //Let the user know that the operation has compleeted
+                    MessageBox.Show("Operation Compleeted");
+                    break;
+
+                case "Function Extraction":
+                    FunctionExtraction();
+                    ResultListBox.ItemsSource = Results;
                     MessageBox.Show("Operation Compleeted");
                     break;
 

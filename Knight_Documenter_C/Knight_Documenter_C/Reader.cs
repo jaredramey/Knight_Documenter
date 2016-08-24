@@ -37,7 +37,7 @@ namespace Knight_Documenter_C
     //Enum to differentiate between documentation styles
     //Starting with comment extraction and then from there i'll add more as 
     //I figure out different documentation types and how to impliment them.
-    enum Method { eComments, eClasses, eClassFunc, eOther };
+    enum Method { eComments, eClasses, eClassFunc, eFunc, eOther };
 
     class Reader
     {
@@ -78,7 +78,9 @@ namespace Knight_Documenter_C
                     //return the extracted class references
                     return returnedLines;
 
-
+                case Method.eFunc:
+                    returnedLines = GetAllFunctions(filePaths);
+                    return returnedLines;
 
                 default:
                     return null;
@@ -252,9 +254,8 @@ namespace Knight_Documenter_C
                 //Loop through current file until there are no more lines to read
                 while ((line = file.ReadLine()) != null)
                 {
-                    //if the line contains a function then add it to the lise
-                    //integer types
-                    if (line.Contains("public int"))
+                    //if the line contains a function then add it to the list
+                    if ((line.Contains("public") || line.Contains("private") || line.Contains("void")) && (line.Contains(");") || line.Contains(")")))
                     {
                         functions.Add(line);
                     }
