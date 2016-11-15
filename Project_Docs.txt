@@ -1,0 +1,64 @@
+Doc Types:
+	- Class Diagram
+	- Program Flow Diagram
+	- Comment Extraction
+	
+Classes:
+	- Reader
+		-> Open Files
+		-> Parse for requested data
+			[] Set up functions for specific extraction?
+			[] Just parse for "Keyword"?
+		-> Send Parsed info to data storage class
+			[] Universal data type?
+			[] figure out how to store and call different data
+			   (i.e. String, Char, Dictionary or Custom type)
+			   
+	- Data
+		-> Store All parsed data to be called later
+		-> Custom storage for classes and their functions
+			class Storage
+			{
+				string Name;
+				list<string> functions;
+			}
+					OR
+			class Storage
+			{
+				string Namel
+				list<string> functions;
+				list<string> refrences;
+			}
+			
+	- Drawing
+		-> Create New window
+		-> Create text in boxes
+		-> layout text boxes correctly
+		-> connect boxes with lines
+		
+	- Visual Docs
+		-> Pull correct data from storage
+		-> Use daya w/ draw functions to create diagrams
+		-> Let user save said diagrams to local machine
+		
+	- Text Docs
+		-> Pull correct data from storage
+		-> Take data and format properly to create Docs
+			(Example)
+			Doc Name
+			Doc Type
+			
+				Comments from "Class"
+					- "Comment 1"
+					- "Comment 2"
+					- "Comment ..."
+				Comments from "Other Class"
+					- "Comment 1"
+					- "Comment 2"
+					- "Comment ..."
+		-> Let user save said documents to local machine
+		
+		
+		
+		
+Ect. Notes:
