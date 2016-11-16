@@ -53,6 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data.cs" />
+    <Compile Include="Drawing.cs" />
+    <Compile Include="Reader.cs" />
+    <Compile Include="TextDoc.cs" />
+    <Compile Include="VisualDoc.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

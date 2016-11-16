@@ -27,6 +27,30 @@ namespace Knight_Documenter_C
             InitializeComponent();
         }
 
+        #region Documentation_Functions
+        private void CommentExtraction()
+        {
+            //TODO:
+            // -Set up Reader Class
+            // -Set up TextDoc Class
+            
+        }
+
+        private void ClassDiagram()
+        {
+            //TODO:
+            // -Set up Drawing Class
+            // -Set Up VisualDoc Class
+        }
+
+        private void FlowDiagram()
+        {
+            //TODO:
+            // -Set up Drawing Class
+            // -Set Up VisualDoc Class
+        }
+        #endregion
+
         #region Main_Function
         private void Function_Test(object sender, RoutedEventArgs e)
         {
