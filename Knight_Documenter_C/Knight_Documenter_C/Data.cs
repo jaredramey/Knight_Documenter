@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Knight_Documenter_C
 {
-    public class Data
+    public sealed class Data
     {
-        private static Data currentData = null;
+        //readonly makes it so this can only be allocated once
+        private static readonly Data currentData = new Data();
         private List<ClassStorage> data = new List<ClassStorage>();
 
         #region SingletonConstruction
@@ -22,11 +23,7 @@ namespace Knight_Documenter_C
         {
             get 
             {
-                if(currentData==null)
-                {
-                    currentData = new Data();
-                }
-                return currentData;
+                return Instance;
             }
         }
         #endregion
@@ -37,6 +34,14 @@ namespace Knight_Documenter_C
             data.Clear();
         }
 
+        #region DataInput
+        public void NewEntry(ClassStorage newData)
+        {
+            data.Add(newData);
+        }
+        #endregion
+
+        #region DataOutput
         //Find a class by name
         public ClassStorage GetClassByName(string className)
         {
@@ -67,13 +72,14 @@ namespace Knight_Documenter_C
                 return null;
             }
         }
+        #endregion
     }
 
     
 }
 
 //Reflection to store data and extract how I need to
-private class ClassStorage
+public class ClassStorage
 {
     //Store Class name
     public string name;

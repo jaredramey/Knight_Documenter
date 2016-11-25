@@ -12,7 +12,11 @@ namespace Knight_Documenter_C
         //Buffer for file reading
         const Int32 BufferSize = 128;
 
-        #region PublicFunctions
+        #region ParssingFunctions
+        private void CommentExtraction(string[] filePaths)
+        {
+            
+        }
            
         #endregion
     }
