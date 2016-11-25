@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Knight_Documenter_C
 {
@@ -12,7 +13,7 @@ namespace Knight_Documenter_C
         const Int32 BufferSize = 128;
 
         #region PublicFunctions
-        
+           
         #endregion
     }
 }

@@ -6,9 +6,30 @@ using System.Threading.Tasks;
 
 namespace Knight_Documenter_C
 {
-    class Data
+    public class Data
     {
-        List<ClassStorage> data = new List<ClassStorage>();
+        private static Data currentData = null;
+        private List<ClassStorage> data = new List<ClassStorage>();
+
+        #region SingletonConstruction
+        //TODO: Improve singleton instance
+        private Data()
+        {
+
+        }
+
+        public static Data Instance
+        {
+            get 
+            {
+                if(currentData==null)
+                {
+                    currentData = new Data();
+                }
+                return currentData;
+            }
+        }
+        #endregion
 
         //Clears all current data
         private void ClearData()
@@ -21,11 +42,13 @@ namespace Knight_Documenter_C
         {
             if (data != null && data.Count > 0)
             {
+                //Find data store that matches given class name
                 return data.Find(x => x.name == className);
             }
 
             else
             {
+                //If no matching class names were found then return null
                 return null;
             }
         }
@@ -33,6 +56,7 @@ namespace Knight_Documenter_C
         //returns all currently stored data
         public List<ClassStorage> GetAllData()
         {
+            //So long as there is stored data then return a data dump
             if(data != null && data.Count > 0)
             {
                 return data;
