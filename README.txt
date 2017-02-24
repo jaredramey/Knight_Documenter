@@ -12,6 +12,6 @@ I noticed something wrong with your code....
 
 If you've noticed an error within the code the please let me know ASAP. You can do that by either submitting an issue here on Github or feel free to hop over to my website @jaredscode.me/contact/ and use my contact form with the subject line "Knight Documenter Issue". Credit will be given both in code and here on the Wiki for the find!
 
-How can I keep up to date with how Math_Knight.lib is going?
+How can I keep up to date with how Knight Documenter is going?
 
 If you want to keep up with the project then you have a few options. You can either star the project here on Github, follow me on twitter @jaredscode, visit my website for blog posts or like my page on Facebook at /jaredscode
