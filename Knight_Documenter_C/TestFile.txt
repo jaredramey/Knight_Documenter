@@ -1,0 +1,22 @@
+//This is a commented line of code
+
+This is not a commented line of code
+//This is a new line of code
+
+This is not a commented line of code //This is a comment after a line
+
+class foo;
+
+private class foobar
+{
+	//this is a test class
+	private var;
+	
+	public int TestFunc(int foo, int bar)
+	{
+	
+	}
+}
+
+
+public int myFunc(int foo, int bar)

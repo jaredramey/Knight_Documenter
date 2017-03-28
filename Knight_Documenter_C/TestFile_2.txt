@@ -1,0 +1,4 @@
+This is not a commented line of code //This is a comment after a line
+//this is a new line of code in file 2
+
+class bar;

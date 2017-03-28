@@ -1,0 +1,20 @@
+Ideas for Knight Documenter
+--------------------------------
+
+Class Diagram
+	-> Collect all class names														<--| Dictionary? (class foo, function bar)
+	-> Collect all functions and assign them to thier respected class				<--|
+	-> Put all info into boxes and draw to screen
+	-> Connect lines between classes that interact w/ each other (?)
+	
+XAML Diagram
+	-- Need to research XAML diagrams
+	
+Program Flow Diagram
+	-> User pulls in project files and then sets which one is the main
+	-> Starting from main, follow program through all the functions 
+	   and follow the data flow as the program progresses (via function calls(?))
+	-> Pull out function names and what class they come from
+	-> As functions and classes are being pulled out, draw box containing
+	   func & class to screen and draw line leading to the next eventual box.
+	-> If the program ends then errase last line made

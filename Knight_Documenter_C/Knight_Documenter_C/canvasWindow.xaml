@@ -1,0 +1,12 @@
+﻿<!-- This window is to be designed for the use of displaying drawn diagrams to the user to ensure layout before saving the canvas-->
+    <Window x:Class="Knight_Documenter_C.canvasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="canvasWindow" Height="300" Width="300">
+    <Grid>
+        <Border Name="CanvasBorder" BorderThickness="5" Margin="10,10,10,52">
+                <Canvas Margin="5" Name="ResultCanvas"></Canvas>
+        </Border>
+        <Button Margin="67,223,67,10" Name="SaveCanvas">Save</Button>
+    </Grid>
+</Window>

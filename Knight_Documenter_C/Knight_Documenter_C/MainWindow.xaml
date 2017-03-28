@@ -1,8 +1,46 @@
 ﻿<Window x:Class="Knight_Documenter_C.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Knight Documenter" Height="350" Width="525">
+    <!-- Resources for Main Window-->
+    <Window.Resources>
+        
+    </Window.Resources>
+    
     <Grid>
+        <!--Right side of the screen-->
+        <!--List box in order to show extracted comments-->
+        <ListBox Margin="229,20,20,20" Name="ResultListBox" ItemsSource="{Binding Results}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--Left side of the screen-->
+        <!-- Testing use of combobox as a drop down menu to allow user to select what they wish to do -->
+        <ComboBox Name="FunctionSelection" Text="Select a Function" Margin="10,20,350,269" SelectedIndex="0">
+            <ComboBoxItem Name="Default">Select A Function</ComboBoxItem>
+            <ComboBoxItem Name="Comment_Extraction">Comment Extraction</ComboBoxItem>
+            <ComboBoxItem Name="Class_Extraction">Class Extraction</ComboBoxItem>
+            <ComboBoxItem Name="Function_Extraction">Function Extraction</ComboBoxItem>
+            <ComboBoxItem Name="TestItem2">Function 2</ComboBoxItem>
+        </ComboBox>
+        
+        <TextBox Margin="10,56,350,232" Name="Selected_File">
+            
+        </TextBox>
+        
+        <Button Margin="10,93,350,195" Name="File_Select" Click="File_Select_Click">
+            Select File
+        </Button>
+        <!-- Button to submit settings and test the function -->
+        <Button Margin="34,249,316,39" Name="CommentExtraction_Test" Click="CommentExtraction_Test_Click">
+            Test Function
+        </Button>
         
     </Grid>
 </Window>
