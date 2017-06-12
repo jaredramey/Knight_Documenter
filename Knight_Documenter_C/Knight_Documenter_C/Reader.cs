@@ -124,16 +124,48 @@ namespace Knight_Documenter_C
 
         private List<string> ClassExtraction(string[] filePaths)
         {
+            //Temp variable to store file line that is currently being parsed
+            string curLine;
             List<string> classLines = null;
 
-            return classLines;
+            //Loop through each given file path
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                //Open the file
+                System.IO.StreamReader file = new System.IO.StreamReader(filePaths[i]);
+
+                //Loop through file until there are no more lines to parse
+                while ((curLine = file.ReadLine()) != null)
+                {
+                    if(curLine.Contains("class"))
+                    {
+                        //Remove public or private to single out class name
+                        if(curLine.Contains("public"))
+                        {
+                            curLine = curLine.Remove(0, 6);
+                        }
+                        else if (curLine.Contains("private"))
+                        {
+                            curLine = curLine.Remove(0, 7);
+                        }
+
+                        //Remove class keyword from line to single out class name
+                        curLine = curLine.Remove(0, 5);
+
+                        //Once class name has been singled out, add line
+                        classLines.Add(curLine);
+                    }
+                }
+            }
+
+                return classLines;
         }
 
         private List<string> FunctionExtraction(string[] filePaths)
         {
             List<string> functionLines = null;
 
-                return functionLines;
+            return functionLines;
         }
         #endregion
     }
