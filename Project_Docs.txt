@@ -32,14 +32,20 @@ Classes:
 			
 	- Drawing
 		-> Create New window
+			[] Need to remember how to make a window to call on later in code. Should hide the interface.
 		-> Create text in boxes
+			[] Graphics rendering overview for WPF:
+			   https://docs.microsoft.com/en-us/dotnet/framework/wpf/graphics-multimedia/wpf-graphics-rendering-overview
 		-> layout text boxes correctly
+			[] Once the graphics rendering is figured out this should be easy.
 		-> connect boxes with lines
+			[] Follow the above reference and there is a section that talks about connecting lines via points on shapes.
 		
 	- Visual Docs
 		-> Pull correct data from storage
-		-> Use daya w/ draw functions to create diagrams
+		-> Use data w/ draw functions to create diagrams
 		-> Let user save said diagrams to local machine
+			[] Should make save/ load interface.
 		
 	- Text Docs
 		-> Pull correct data from storage
@@ -57,8 +63,9 @@ Classes:
 					- "Comment 2"
 					- "Comment ..."
 		-> Let user save said documents to local machine
-		
+			[] As stated earlier, I should make a save/ load interface.
 		
 		
 		
 Ect. Notes:
+	-> Need to figure out the graphics rendering. Everything should fall in place after that.

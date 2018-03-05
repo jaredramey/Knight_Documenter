@@ -8,7 +8,7 @@ namespace Knight_Documenter_C
 {
     public sealed class Data
     {
-        //readonly makes it so this can only be allocated once
+        //read-only makes it so this can only be allocated once
         private static readonly Data currentData = new Data();
         private List<ClassStorage> data = new List<ClassStorage>();
 
@@ -85,7 +85,7 @@ public class ClassStorage
     public string name;
     //Store function names
     public List<string> functions;
-    //Store refrences from class to class
+    //Store references from class to class
     public List<string> functionRefrences;
     //Store all comments from class
     public List<string> comments;

@@ -11,3 +11,4 @@ C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_D
 C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\bin\Debug\Knight_Documenter_C.pdb
 C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.exe
 C:\Users\Brian's\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\obj\Debug\Knight_Documenter_C.pdb
+C:\Users\Oezaxs\Documents\GitHub\Knight_Documenter\Knight_Documenter_C\Knight_Documenter_C\bin\Debug\Knight_Documenter_C.exe.config
