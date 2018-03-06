@@ -8,5 +8,6 @@ namespace Knight_Documenter_C
 {
     class Drawing
     {
+
     }
 }
