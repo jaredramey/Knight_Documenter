@@ -21,7 +21,7 @@
         </ListBox>
 
         <!--Left side of the screen-->
-        <!-- Testing use of combobox as a drop down menu to allow user to select what they wish to do -->
+        <!-- Testing use of combo-box as a drop down menu to allow user to select what they wish to do -->
         <ComboBox Name="FunctionSelection" Text="Select a Function" Margin="28,20,316,269" SelectedIndex="0" RenderTransformOrigin="1.067,0.874">
             <ComboBoxItem Name="Default">Select A Function</ComboBoxItem>
             <ComboBoxItem Name="Comment_Extraction">Comment Extraction</ComboBoxItem>

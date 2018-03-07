@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
 
 namespace Knight_Documenter_C
 {
@@ -20,7 +22,9 @@ namespace Knight_Documenter_C
     /// </summary>
     public partial class MainWindow : Window
     {
-        string[] filenames;
+        //All of the user selected files
+        private string[] filenames;
+        private Window resultsWindow = new Window();
 
         public MainWindow()
         {
@@ -54,7 +58,14 @@ namespace Knight_Documenter_C
         #region Main_Function
         private void Function_Test(object sender, RoutedEventArgs e)
         {
-            
+            if (!resultsWindow.IsActive)
+            {
+                resultsWindow.Show();
+            }
+            else
+            {
+                resultsWindow.Hide();
+            }
         }
         #endregion
 
@@ -97,5 +108,9 @@ namespace Knight_Documenter_C
             
         }
         #endregion
+
+        #region SetUpFunctions_ResultWindow
+
+        #endregion SetUpFunctions_ResultWindow
     }
 }
