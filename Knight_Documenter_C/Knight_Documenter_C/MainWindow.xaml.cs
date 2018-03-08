@@ -24,7 +24,7 @@ namespace Knight_Documenter_C
     {
         //All of the user selected files
         private string[] filenames;
-        private Window resultsWindow = new Window();
+        private Window resultsWindow = new Window() { Height = 1000, Width = 1000};
 
         public MainWindow()
         {
@@ -60,6 +60,13 @@ namespace Knight_Documenter_C
         {
             if (!resultsWindow.IsActive)
             {
+                Canvas testCanvas = new Canvas();
+                Shape shapeToRender = new Rectangle() { Fill = Brushes.Blue, Height = 50, Width = 50};
+
+                testCanvas.Children.Add(shapeToRender);
+                Canvas.SetLeft(shapeToRender, resultsWindow.Height / 2);
+                Canvas.SetTop(shapeToRender, resultsWindow.Width / 2);
+                resultsWindow.Content = testCanvas;
                 resultsWindow.Show();
             }
             else
