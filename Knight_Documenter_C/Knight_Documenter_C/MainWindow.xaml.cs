@@ -61,12 +61,16 @@ namespace Knight_Documenter_C
             if (!resultsWindow.IsActive)
             {
                 Canvas testCanvas = new Canvas();
-                Shape shapeToRender = new Rectangle() { Fill = Brushes.Blue, Height = 50, Width = 50};
+                Shape shapeToRender = new Rectangle() { Fill = Brushes.White, Height = 50, Width = 50, Stroke = Brushes.Black};
+                TextBlock testText = new TextBlock() { Text = "This is a test block of code.", TextAlignment = TextAlignment.Center, RenderTransformOrigin = shapeToRender.RenderTransformOrigin};
+                Grid testShapeAndText = new Grid();
 
                 testCanvas.Children.Add(shapeToRender);
-                Canvas.SetLeft(shapeToRender, resultsWindow.Height / 2);
-                Canvas.SetTop(shapeToRender, resultsWindow.Width / 2);
-                resultsWindow.Content = testCanvas;
+                testShapeAndText.Children.Add(testCanvas);
+                testShapeAndText.Children.Add(testText);
+                Canvas.SetLeft(testShapeAndText, resultsWindow.Height / 2);
+                Canvas.SetTop(testShapeAndText, resultsWindow.Width / 2);
+                resultsWindow.Content = testShapeAndText;
                 resultsWindow.Show();
             }
             else
