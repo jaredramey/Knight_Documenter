@@ -17,9 +17,20 @@ using System.Windows.Interop;
 
 namespace Knight_Documenter_C
 {
+    public class TextandShape
+    {
+        public Canvas canvasToDrawOn;
+        public double posX = 0, posY = 0;
+        public double recHieght = 0, recWidth = 0;
+        public TextBlock textToShow = new TextBlock();
+        public Shape shape = new Rectangle();
+    }
+
     class Drawing
     {
         private Canvas ResultCanvas { get; set; }
+        public Drawing Instance {get; set;}
+        
 
         public void CreateCanvas()
         {
@@ -31,26 +42,49 @@ namespace Knight_Documenter_C
             return ResultCanvas;
         }
 
-        public float[] GetTextBlockSize(string TextToCheck)
+        public void GetTextBlockSize(string TextToCheck)
         {
-            float[] size = new float[1];
+            
         }
 
-        public void WriteTextOnObject(string TextToWrite, int ObjectPositionInList)
+        public void WriteTextOnObject(string TextToWrite)
         {
             TextBlock textToWrite = new TextBlock() { Text = TextToWrite};
 
 
         }
 
-        //Draw a shape to the new canvas.
-        public void DrawRectanlgeAtPosition(Canvas CanvasToDrawOn, float _X, float _Y, float _Height, float _Width)
+        //Create and prep for drawing a new shape.
+        public TextandShape CreateRectangleWithText(Canvas CanvasToDrawOn, string TextToWrite, float _X, float _Y)
         {
-            Shape ObjectToDraw = new Rectangle() { Height = _Height, Width = _Width, Stroke = Brushes.Black};
-            ResultCanvas.Children.Add(ObjectToDraw);
+            //Create new object to populate
+            TextandShape newRect = new TextandShape();
+            newRect.textToShow.Text = TextToWrite;
 
-            Canvas.SetLeft(CanvasToDrawOn, _X);
-            Canvas.SetTop(CanvasToDrawOn, _Y);
+            //Measure to get how big the rectangle will need to be
+            newRect.textToShow.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+            newRect.textToShow.Arrange(new Rect(newRect.textToShow.DesiredSize));
+
+            //Populate new object with all necessary information
+            newRect.recHieght = newRect.textToShow.ActualHeight;
+            newRect.recWidth = newRect.textToShow.ActualWidth;
+            newRect.posX = _X;
+            newRect.posY = _Y;
+            newRect.canvasToDrawOn = CanvasToDrawOn;
+
+            //Create the rectangle
+            newRect.shape = new Rectangle() { Height = newRect.recHieght, Width = newRect.recWidth, Stroke = Brushes.Black };
+            newRect.canvasToDrawOn.Children.Add(newRect.shape);
+            newRect.canvasToDrawOn.Children.Add(newRect.textToShow);
+
+            //Set the objects position on the canvas
+            Canvas.SetLeft(newRect.shape, newRect.posX);
+            Canvas.SetTop(newRect.shape, newRect.posY);
+            Canvas.SetLeft(newRect.textToShow, newRect.posX);
+            Canvas.SetTop(newRect.textToShow, newRect.posY);
+
+            //Return the object so the object can be added to a set later.
+            return newRect;
         }
     }
 }
