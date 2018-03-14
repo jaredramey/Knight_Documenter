@@ -42,16 +42,24 @@ namespace Knight_Documenter_C
             return ResultCanvas;
         }
 
-        public void GetTextBlockSize(string TextToCheck)
+        private void GetTextBlockSize(TextandShape shapeObject)
         {
-            
+            shapeObject.textToShow.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+            shapeObject.textToShow.Arrange(new Rect(shapeObject.textToShow.DesiredSize));
         }
 
-        public void WriteTextOnObject(string TextToWrite)
+        private void WriteTextOnObject(string TextToWrite, TextandShape shapeObject)
         {
-            TextBlock textToWrite = new TextBlock() { Text = TextToWrite};
+            shapeObject.textToShow.Text = TextToWrite;
+            GetTextBlockSize(shapeObject);
+            shapeObject.recHieght = shapeObject.textToShow.ActualHeight;
+            shapeObject.recWidth = shapeObject.textToShow.ActualWidth;
+        }
 
-
+        private void SetObjectPos(TextandShape shapeObject, double X, double Y)
+        {
+            shapeObject.posX = X;
+            shapeObject.posY = Y;
         }
 
         //Create and prep for drawing a new shape.
@@ -59,17 +67,8 @@ namespace Knight_Documenter_C
         {
             //Create new object to populate
             TextandShape newRect = new TextandShape();
-            newRect.textToShow.Text = TextToWrite;
-
-            //Measure to get how big the rectangle will need to be
-            newRect.textToShow.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
-            newRect.textToShow.Arrange(new Rect(newRect.textToShow.DesiredSize));
-
-            //Populate new object with all necessary information
-            newRect.recHieght = newRect.textToShow.ActualHeight;
-            newRect.recWidth = newRect.textToShow.ActualWidth;
-            newRect.posX = _X;
-            newRect.posY = _Y;
+            WriteTextOnObject(TextToWrite, newRect);
+            SetObjectPos(newRect, _X, _Y);
             newRect.canvasToDrawOn = CanvasToDrawOn;
 
             //Create the rectangle
