@@ -62,6 +62,20 @@ namespace Knight_Documenter_C
             shapeObject.posY = Y;
         }
 
+        private Shape DrawLine(float[] posA, float[] posB)
+        {
+            Shape line = new Line() { X1 = posA[0], Y1 = posA[1], X2 = posB[0], Y2 = posB[1]};
+            return line;
+        }
+
+        public void DrawLineBetweenBoxes(TextandShape obj1, TextandShape obj2, Canvas CanvasToDrawOn)
+        {
+            float[] pos1 = {(float)obj1.posX, (float)obj2.posY};
+            float[] pos2 = {(float)obj2.posX, (float)obj2.posY};
+
+            CanvasToDrawOn.Children.Add(DrawLine(pos1, pos2));
+        }
+
         //Create and prep for drawing a new shape.
         public TextandShape CreateRectangleWithText(Canvas CanvasToDrawOn, string TextToWrite, float _X, float _Y)
         {

@@ -10,6 +10,5 @@ namespace Knight_Documenter_C
     {
 
 
-
     }
 }
